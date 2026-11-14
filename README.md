@@ -6,6 +6,19 @@ Designed with dual independent HTTP server instances to separate video stream ha
 
 ---
 
+## Visual Showcase
+
+<p align="center">
+  <img src="docs/images/ender5_camera_installed.jpg" alt="Ender-5 Camera Mount Assembly" width="48%">
+  <img src="docs/images/camera_mount.jpg" alt="Extrusion Mount and Wiring" width="48%">
+</p>
+
+<p align="center">
+  <img src="docs/images/web_ui_dashboard.png" alt="Mobile-Friendly Responsive Web Dashboard" width="45%">
+</p>
+
+---
+
 ## Key Highlights
 
 - **Dual Server Architecture:**
@@ -17,14 +30,32 @@ Designed with dual independent HTTP server instances to separate video stream ha
   - Dynamic resolution selector (VGA up to UXGA 2MP).
   - JPEG quality and image brightness sliders.
   - Onboard High-Power Flash LED toggle button.
-  - Image vertical flip (vflip) and horizontal mirror (hmirror) switches.
-  - Direct single-frame snapshot capture.
+  - Image vertical flip (`vflip`) and horizontal mirror (`hmirror`) switches.
+  - Direct single-frame snapshot capture (`/capture`).
 - **Printer Integration Ready:**
   - Works out of the box with Klipper (Fluidd & Mainsail) and OctoPrint camera modules.
 - **Networking Stability:**
   - Static IP configuration to prevent IP changes across router reboots.
   - Wi-Fi power saving disabled for uninterrupted monitoring.
   - Brownout detection deactivated during initial boot to safeguard against high inrush currents.
+
+---
+
+## 3D Printed Enclosure & Mounting Bracket
+
+The project includes custom 3D printable brackets designed specifically for the 2020 V-slot aluminum extrusions of the Ender-5 frame.
+
+All files are located in the [`3d_models/`](3d_models/) directory:
+- `esp32_cam_case_bottom.stl`: Snug-fit bottom enclosure for the ESP32-CAM board.
+- `esp32_cam_case_top.stl`: Ventilated top lid with camera lens and flash cutouts.
+- Extrusion bracket mount with swivel pivot for optimal bed angle adjustment.
+
+### Recommended Slicing & Print Settings
+- **Filament:** PETG or ABS (recommended due to heated bed ambient temperatures), or PLA+
+- **Layer Height:** 0.20 mm
+- **Infill:** 30% Gyroid or Grid
+- **Perimeters/Walls:** 3 or 4 walls for mechanical durability
+- **Hardware Needed:** M3 / M4 T-nuts and matching button-head screws
 
 ---
 
@@ -57,7 +88,7 @@ Designed with dual independent HTTP server instances to separate video stream ha
    - **PSRAM:** Enabled
 
 ### 2. Network Configuration
-Open `firmware/ender5_cam/ender5_cam.ino` and update the Wi-Fi credentials and static IP settings to match your local subnet:
+Open `firmware/ender5_cam/ender5_cam.ino` and update your Wi-Fi credentials and static IP to match your local subnet:
 
 ```cpp
 const char* ssid = "YOUR_WIFI_SSID";
@@ -78,18 +109,6 @@ IPAddress secondaryDNS(8, 8, 8, 8);
   - `RX` -> ESP32-CAM `U0T` (TX)
   - Connect `GPIO 0` to `GND` during flashing to enter bootloader mode.
 - Hit **Upload** in Arduino IDE. Once complete, disconnect `GPIO 0` from `GND` and press the reset button.
-
----
-
-## 3D Printer Enclosure & Mount
-
-Check the [`3d_models/`](3d_models/) folder for 3D printable mounting brackets designed for the 2020 aluminum extrusions of the Ender-5 frame.
-
-### Recommended Print Settings
-- **Material:** PETG or ABS (recommended for printer enclosures)
-- **Layer Height:** 0.20 mm
-- **Infill:** 30% Gyroid
-- **Hardware:** M3 or M4 T-nuts with matching hex socket cap screws.
 
 ---
 

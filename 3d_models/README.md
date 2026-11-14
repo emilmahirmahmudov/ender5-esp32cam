@@ -1,11 +1,16 @@
 # 3D Printable Mount & Enclosure
 
-Place your 3D models (STL, STEP, or 3MF files) for the Ender-5 ESP32-CAM mount in this directory.
+This directory contains the 3D printable STL files tailored for mounting the ESP32-CAM module to Creality Ender-5 series 3D printers.
 
-### Recommended Slicing Settings
-- **Filament:** PETG or ABS (recommended due to ambient printer heat), or PLA+
+### Included Models
+- **`esp32_cam_case_bottom.stl`**: Enclosure base designed for the AI-Thinker ESP32-CAM board.
+- **`esp32_cam_case_top.stl`**: Top snap-on lid with cutouts for the OV2640 camera lens, status LEDs, and ventilation slots.
+- **Camera Extrusion Mount**: Attaches firmly to standard 2020 V-slot aluminum extrusions.
+
+### Recommended Slicing & Print Settings
+- **Filament:** PETG or ABS (recommended due to bed temperatures), or PLA+
 - **Layer Height:** 0.20 mm
-- **Infill:** 25% - 40% (Gyroid or Grid)
-- **Perimeters/Walls:** 3 or 4 walls for strong rigidity
-- **Supports:** Only where necessary depending on bracket design
-- **Mounting:** Attaches to Ender-5 2020 V-slot aluminum extrusion with M3/M4 T-nuts and screws.
+- **Infill:** 25% - 40% (Gyroid or Grid pattern)
+- **Perimeters / Walls:** 3 to 4 walls for maximum structural rigidity
+- **Supports:** Required only for steep overhangs depending on orientation
+- **Mounting Fasteners:** Standard M3 or M4 T-nuts with matching socket head cap screws

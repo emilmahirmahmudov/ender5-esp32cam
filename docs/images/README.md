@@ -1,8 +1,8 @@
-# Project Gallery
+# Project Visuals & Gallery
 
-Store project photos, hardware assembly pictures, and web interface screenshots here.
+This folder contains high-resolution hardware assembly photos and user interface screenshots for the Ender-5 ESP32-CAM monitoring project.
 
-Reference paths in the main documentation:
-- Mount installation photos: `docs/images/assembly.jpg`
-- Web UI preview: `docs/images/web_ui.png`
-- Klipper/Mainsail setup: `docs/images/klipper_integration.png`
+### Images Included
+- **`ender5_camera_installed.jpg`**: Overview of the camera module installed on the printer's top aluminum extrusion.
+- **`camera_mount.jpg`**: Detailed close-up of the mounting bracket and clean wire routing.
+- **`web_ui_dashboard.png`**: The responsive web application dashboard showcasing live MJPEG streaming, resolution controls, and flash toggling.

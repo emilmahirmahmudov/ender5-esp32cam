@@ -50,13 +50,13 @@ static const char* _STREAM_PART = "Content-Type: image/jpeg\r\nContent-Length: %
 
 static const char PROGMEM INDEX_HTML[] = R"rawliteral(
 <!DOCTYPE html>
-<html lang="az">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="#0b1120">
-  <title>Ender-5 Kamera Nəzarəti</title>
+  <title>Ender-5 Camera Monitor</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body {
@@ -267,48 +267,48 @@ static const char PROGMEM INDEX_HTML[] = R"rawliteral(
     <header>
       <h1>🖨️ Ender-5 Cam</h1>
       <div class="badge">
-        <span class="pulse-dot"></span> CANLI
+        <span class="pulse-dot"></span> LIVE
       </div>
     </header>
 
     <div class="video-card">
       <div class="video-wrapper" id="videoBox">
-        <img src="" id="video-stream" alt="Video axını yüklənir...">
-        <button class="fullscreen-btn" onclick="toggleFullscreen()">⛶ Tam Ekran</button>
+        <img src="" id="video-stream" alt="Loading stream...">
+        <button class="fullscreen-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
       </div>
 
       <div class="control-section">
         <div class="btn-grid">
-          <button id="flash-btn" class="btn-flash" onclick="toggleFlash()">💡 Fənər</button>
-          <button onclick="toggleFlip('vflip')">↕️ Alt-Üst</button>
-          <button onclick="toggleFlip('hmirror')">↔️ Güzgü</button>
-          <a href="/capture" target="_blank" class="action-link btn-capture">📷 Şəkil Çək</a>
+          <button id="flash-btn" class="btn-flash" onclick="toggleFlash()">💡 Flashlight</button>
+          <button onclick="toggleFlip('vflip')">↕️ Flip Vert</button>
+          <button onclick="toggleFlip('hmirror')">↔️ Mirror Horiz</button>
+          <a href="/capture" target="_blank" class="action-link btn-capture">📷 Snapshot</a>
         </div>
 
         <div class="settings-panel">
           <div class="form-group">
-            <label for="resolution">📐 Çözünürlük (Ölçü):</label>
+            <label for="resolution">📐 Resolution:</label>
             <select id="resolution" onchange="setControl('framesize', this.value)">
-              <option value="8" selected>VGA (640x480) - Standart / Sürətli</option>
-              <option value="9">SVGA (800x600) - Yaxşı balans</option>
-              <option value="11">HD (1280x720) - 720p Geniş ekran</option>
-              <option value="12">SXGA (1280x1024) - Yüksək keyfiyyət</option>
-              <option value="13">UXGA (1600x1200) - Maksimum 2MP</option>
+              <option value="8" selected>VGA (640x480) - Default / Fast</option>
+              <option value="9">SVGA (800x600) - Balanced</option>
+              <option value="11">HD (1280x720) - 720p Widescreen</option>
+              <option value="12">SXGA (1280x1024) - High Quality</option>
+              <option value="13">UXGA (1600x1200) - Max 2MP</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="quality">✨ Sıxılma Keyfiyyəti:</label>
+            <label for="quality">✨ JPEG Quality:</label>
             <select id="quality" onchange="setControl('quality', this.value)">
-              <option value="10">Maksimum Aydınlıq (10)</option>
-              <option value="12" selected>Yüksək Keyfiyyət (12)</option>
-              <option value="18">Balanslaşdırılmış (18)</option>
-              <option value="25">Aşağı / Ən Yüksək FPS (25)</option>
+              <option value="10">Max Clarity (10)</option>
+              <option value="12" selected>High Quality (12)</option>
+              <option value="18">Balanced (18)</option>
+              <option value="25">Low / Highest FPS (25)</option>
             </select>
           </div>
 
           <div class="form-group" style="grid-column: 1 / -1;">
-            <label for="brightness">☀️ Parlaqlıq: <span id="bright-val" style="color:#38bdf8; font-weight:bold;">0</span></label>
+            <label for="brightness">☀️ Brightness: <span id="bright-val" style="color:#38bdf8; font-weight:bold;">0</span></label>
             <input type="range" id="brightness" min="-2" max="2" value="0" oninput="document.getElementById('bright-val').innerText = this.value; setControl('brightness', this.value)">
           </div>
         </div>
@@ -316,13 +316,13 @@ static const char PROGMEM INDEX_HTML[] = R"rawliteral(
     </div>
 
     <div class="endpoints-card">
-      <strong>Klipper (Fluidd / Mainsail) və OctoPrint linkləri:</strong><br>
+      <strong>Klipper (Fluidd / Mainsail) & OctoPrint Endpoints:</strong><br>
       Stream: <code id="stream-url">http://192.168.1.185:81/stream</code><br>
       Snapshot: <code id="snap-url">http://192.168.1.185/capture</code>
     </div>
 
     <footer>
-      ESP32-CAM Dual-Server &bull; Ender-5 Monitorinq &bull; Sabit IP: 192.168.1.185
+      ESP32-CAM Dual-Server &bull; Ender-5 Monitor &bull; Static IP: 192.168.1.185
     </footer>
   </div>
 
@@ -344,13 +344,13 @@ static const char PROGMEM INDEX_HTML[] = R"rawliteral(
           const btn = document.getElementById('flash-btn');
           if (state === '1') {
             btn.classList.add('active');
-            btn.innerText = '💡 Fənər: AÇIQ';
+            btn.innerText = '💡 Flash: ON';
           } else {
             btn.classList.remove('active');
-            btn.innerText = '💡 Fənər';
+            btn.innerText = '💡 Flashlight';
           }
         })
-        .catch(err => console.error("Fənər xətası:", err));
+        .catch(err => console.error("Flash error:", err));
     }
 
     function toggleFlip(type) {
@@ -368,7 +368,7 @@ static const char PROGMEM INDEX_HTML[] = R"rawliteral(
             }, 300);
           }
         })
-        .catch(err => console.error("Parametr xətası:", err));
+        .catch(err => console.error("Control error:", err));
     }
 
     function toggleFullscreen() {
@@ -575,7 +575,7 @@ void startCameraServer() {
     httpd_register_uri_handler(camera_httpd, &vflip_uri);
     httpd_register_uri_handler(camera_httpd, &hmirror_uri);
     httpd_register_uri_handler(camera_httpd, &control_uri);
-    Serial.println("Esas Server (Port 80) ise dusdu!");
+    Serial.println("Primary Control Server (Port 80) started!");
   }
 
   httpd_config_t stream_config = HTTPD_DEFAULT_CONFIG();
@@ -586,7 +586,7 @@ void startCameraServer() {
 
   if (httpd_start(&stream_httpd, &stream_config) == ESP_OK) {
     httpd_register_uri_handler(stream_httpd, &stream_uri);
-    Serial.println("Video Stream Server (Port 81) ise dusdu!");
+    Serial.println("Video Stream Server (Port 81) started!");
   }
 }
 
@@ -595,7 +595,7 @@ void setup() {
 
   Serial.begin(115200);
   Serial.setDebugOutput(false);
-  Serial.println("\n--- Ender-5 ESP32-CAM Baslayir ---");
+  Serial.println("\n--- Ender-5 ESP32-CAM Booting ---");
 
   camera_config_t config;
   config.ledc_channel = LEDC_CHANNEL_0;
@@ -631,7 +631,7 @@ void setup() {
 
   esp_err_t err = esp_camera_init(&config);
   if (err != ESP_OK) {
-    Serial.printf("Kamera xətası: 0x%x\n", err);
+    Serial.printf("Camera initialization error: 0x%x\n", err);
     return;
   }
 
@@ -645,10 +645,10 @@ void setup() {
   }
 
   if (!WiFi.config(local_IP, gateway, subnet, primaryDNS, secondaryDNS)) {
-    Serial.println("Sabit IP parametr xətası!");
+    Serial.println("Static IP configuration failed!");
   }
 
-  Serial.printf("Wi-Fi sebekesine qosulur: %s\n", ssid);
+  Serial.printf("Connecting to Wi-Fi SSID: %s\n", ssid);
   WiFi.begin(ssid, password);
   WiFi.setSleep(false);
 
@@ -657,10 +657,10 @@ void setup() {
     Serial.print(".");
   }
 
-  Serial.println("\nWi-Fi sebekesine qosuldu!");
-  Serial.print("Veb Panel: http://");
+  Serial.println("\nConnected to Wi-Fi!");
+  Serial.print("Web Dashboard: http://");
   Serial.println(WiFi.localIP());
-  Serial.print("Canli Video Stream: http://");
+  Serial.print("Live MJPEG Stream: http://");
   Serial.print(WiFi.localIP());
   Serial.println(":81/stream");
 
