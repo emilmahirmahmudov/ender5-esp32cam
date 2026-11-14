@@ -1,0 +1,28 @@
+# Compiled files and binaries
+*.o
+*.d
+*.bin
+*.elf
+*.hex
+
+# Arduino temporary files
+build/
+*arduino.build/
+*.arduino_build_*
+
+# OS Generated
+.DS_Store
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+
+# Editor & IDE configs
+.vscode/
+.idea/
+*.swp
+*.bak
+*.orig
+*~
+
+# Temporary backups
+*.zip
