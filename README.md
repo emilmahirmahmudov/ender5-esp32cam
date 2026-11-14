@@ -46,9 +46,11 @@ Designed with dual independent HTTP server instances to separate video stream ha
 The project includes custom 3D printable brackets designed specifically for the 2020 V-slot aluminum extrusions of the Ender-5 frame.
 
 All files are located in the [`3d_models/`](3d_models/) directory:
+- `ender5_camera_mount.stl`: Custom mounting bracket attaching securely to standard 2020 V-slot aluminum extrusions on the Ender-5 frame.
 - `esp32_cam_case_bottom.stl`: Snug-fit bottom enclosure for the ESP32-CAM board.
 - `esp32_cam_case_top.stl`: Ventilated top lid with camera lens and flash cutouts.
-- Extrusion bracket mount with swivel pivot for optimal bed angle adjustment.
+
+> **Custom Mounts & Universal Compatibility:** The enclosure is modular. While the included mount is designed for 2020 extrusion frames, you can easily design your own custom mount or adapter in CAD to fit **any 3D printer** (such as Ender-3, Prusa, Voron, Bambu Lab, Anycubic, or DIY builds).
 
 ### Recommended Slicing & Print Settings
 - **Filament:** PETG or ABS (recommended due to heated bed ambient temperatures), or PLA+
