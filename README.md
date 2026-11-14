@@ -143,4 +143,4 @@ Under **Settings > Webcam & Timelapse**:
 
 ## License
 
-This project is released under open-source terms. Feel free to use, modify, and distribute for personal and educational 3D printing projects.
+This project is licensed as open-source under the terms specified in the [LICENSE](LICENSE) file. You are welcome to use, modify, and build upon it for personal, hobbyist, and educational 3D printing applications.
